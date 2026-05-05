@@ -2,8 +2,16 @@ const form = document.querySelector('form')
 const input = document.querySelector('input')
 const results = document.querySelector('.results')
 
-form.addEventListener('submit', (event) => {
+form.addEventListener('submit', async (event) => {
     event.preventDefault()
     const busca = input.value
-    fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
+    const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
+    const dados = await resposta.json()
+    const animes = dados.data
+    animes.forEach(anime => {
+        const card = document.createElement('div') 
+        card.classList.add('card')
+        results.appendChild(card)  
+        card.innerHTML = `<img src="${anime.images.jpg.image_url}"> <h3>${anime.title}</h3> <p>${anime.genres.map(genero => genero.name).join(', ')}</p>`
+    });
 })
