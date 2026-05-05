@@ -8,6 +8,7 @@ form.addEventListener('submit', async (event) => {
     const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
     const dados = await resposta.json()
     const animes = dados.data
+    results.innerHTML = ''
     animes.forEach(anime => {
         const card = document.createElement('div') 
         card.classList.add('card')
