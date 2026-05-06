@@ -5,6 +5,8 @@ const results = document.querySelector('.results')
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
     const busca = input.value
+
+    try {
     const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
     const dados = await resposta.json()
     const animes = dados.data
@@ -19,4 +21,9 @@ form.addEventListener('submit', async (event) => {
         card.innerHTML = `<img src="${anime.images.jpg.image_url}"> <h3>${anime.title}</h3> <p>${anime.genres.map(genero => genero.name).join(', ')}</p>`
     });
     }
+} catch (erro) {
+    results.innerHTML = `<p>Servidor nao encontrado</p>`
+}
 })
+    
+
