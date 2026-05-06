@@ -9,10 +9,14 @@ form.addEventListener('submit', async (event) => {
     const dados = await resposta.json()
     const animes = dados.data
     results.innerHTML = ''
+    if (animes.length === 0) {
+        results.innerHTML = `<p>Nenhum resultado encontrado</p>`
+    } else {
     animes.forEach(anime => {
         const card = document.createElement('div') 
         card.classList.add('card')
         results.appendChild(card)  
         card.innerHTML = `<img src="${anime.images.jpg.image_url}"> <h3>${anime.title}</h3> <p>${anime.genres.map(genero => genero.name).join(', ')}</p>`
     });
+    }
 })
