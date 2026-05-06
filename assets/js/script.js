@@ -1,12 +1,14 @@
 const form = document.querySelector('form')
 const input = document.querySelector('input')
 const results = document.querySelector('.results')
+const loadingResults = document.querySelector('#loading-results')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
     const busca = input.value
 
     try {
+    loadingResults.classList.remove('hidden')
     const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
     const dados = await resposta.json()
     const animes = dados.data
@@ -23,7 +25,11 @@ form.addEventListener('submit', async (event) => {
     }
 } catch (erro) {
     results.innerHTML = `<p>Servidor nao encontrado</p>`
+} finally {
+    loadingResults.classList.add('hidden')
 }
 })
+
+
     
 
