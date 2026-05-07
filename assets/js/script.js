@@ -50,6 +50,13 @@ btnFav.addEventListener('click', () => {
         const card = document.createElement('div')
         card.classList.add('cardsFav')
         cardsFav.appendChild(card)
-        card.innerHTML = `<img src="${favoritar.imagem}"> <h3>${favoritar.titulo}</h3>`
+        card.innerHTML = `<img src="${favoritar.imagem}"> <h3>${favoritar.titulo}</h3> <button onclick="remover('${favoritar.titulo}')">Remover</button>`
     })
 })
+
+function remover(titulo) {
+    const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
+    const novosFavoritos = favoritosAtuais.filter(fav => fav.titulo !== titulo)
+    localStorage.setItem('favoritos', JSON.stringify(novosFavoritos))
+    btnFav.click()
+}
