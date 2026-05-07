@@ -45,6 +45,7 @@ function favoritar(titulo, imagem) {
 
 btnFav.addEventListener('click', () => {
     const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
+    cardsFav.innerHTML = ''
     favoritosAtuais.forEach(favoritar => {
         const card = document.createElement('div')
         card.classList.add('cardsFav')
