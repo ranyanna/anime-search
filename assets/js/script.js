@@ -2,6 +2,8 @@ const form = document.querySelector('form')
 const input = document.querySelector('input')
 const results = document.querySelector('.results')
 const loadingResults = document.querySelector('#loading-results')
+const btnFav = document.querySelector('.btn-fav')
+const cardsFav = document.querySelector('.cards-fav')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
@@ -41,3 +43,12 @@ function favoritar(titulo, imagem) {
     localStorage.setItem('favoritos', JSON.stringify(favoritosAtuais))
 }
 
+btnFav.addEventListener('click', () => {
+    const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
+    favoritosAtuais.forEach(favoritar => {
+        const card = document.createElement('div')
+        card.classList.add('cardsFav')
+        cardsFav.appendChild(card)
+        card.innerHTML = `<img src="${favoritar.imagem}"> <h3>${favoritar.titulo}</h3>`
+    })
+})
