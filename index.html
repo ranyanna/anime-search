@@ -7,22 +7,58 @@
     <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
-    <form>
-      <label>Nome </label>
-      <input type="search" name="" id="name" />
-      <button type="submit">Procurar</button>
-    </form>
+    <nav>
+      <div class="logo">
+        <h2 class="page-logo">Aniboo</h2>
+      </div>
 
-    <div class="results"></div>
+      <ul>
+        <li>
+          <a href="#" class="search">Busca</a>
+        </li>
+        <li>
+          <a href="#" class="favorites">Favoritos💜</a>
+        </li>
+        <li>
+          <a href="#" class="top-animes">Top Animes</a>
+        </li>
+      </ul>
+    </nav>
 
-    <div class="loading-results hidden" id="loading-results">
-      <p>Carregando...</p>
-    </div>
+    <main>
+      <section class="banner-container">
+        <p class="hero-label">Explore seu domínio</p>
+        <h1 class="hero-title">
+          Encontre seu próximo <span>anime favorito</span>
+        </h1>
+        <img src="" alt="" class="hero-pic" />
+        <p class="hero-desc">
+          Busque por nome, explore por gênero, salve os seus favoritos.
+        </p>
+        <form>
+          <input
+            type="search"
+            name=""
+            id="name"
+            placeholder="Ex: Jujutsu Kaisen, Bleach, One Piece..."
+          />
+          <button type="submit">Buscar</button>
+        </form>
+      </section>
 
-    <div class="container-favorites">
-      <button class="btn-fav" id="btn-fav">Ver Favoritos</button>
-      <div class="cards-fav" id="cards-fav"></div>
-    </div>
+      <section class="results-container">
+        <div class="results"></div>
+
+        <div class="loading-results hidden" id="loading-results">
+          <p>Carregando...</p>
+        </div>
+      </section>
+
+      <section class="fav-section">
+        <button class="btn-fav" id="btn-fav">Ver Favoritos</button>
+        <div class="cards-fav" id="cards-fav"></div>
+      </section>
+    </main>
     <script src="assets/js/script.js"></script>
   </body>
 </html>
