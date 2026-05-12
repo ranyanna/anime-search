@@ -8,6 +8,8 @@ const cardsFav = document.querySelector('.cards-fav')
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
     const busca = input.value
+    cardsFav.classList.add('hidden')
+    results.classList.remove('hidden')
 
     try {
         loadingResults.classList.remove('hidden')
@@ -46,6 +48,8 @@ function favoritar(titulo, imagem) {
 btnFav.addEventListener('click', () => {
     const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
     cardsFav.innerHTML = ''
+    results.classList.add('hidden')
+    cardsFav.classList.remove('hidden')
     favoritosAtuais.forEach(favoritar => {
         const card = document.createElement('div')
         card.classList.add('cardsFav')
