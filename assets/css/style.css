@@ -1,10 +1,14 @@
 :root {
     --cor-fundo: #0a0a0f;
+    --cor-fundo-claro: #12121A;
+    --cor-gradiente: #1A0A2D;
     --cor-cards: #242433;
     --cor-destaque: #7c3aed;
     --cor-destaque-claro: #a855f7;
     --cor-texto: #fafafa;
-    --cor-bordas: #2a1f3d;
+    --cor-texto-escuro: #9380a7;
+    --cor-bordas: #281d3b;
+    --cor-placeholder: #3b3b53;
 }
 
 * {
@@ -26,7 +30,7 @@ h1 {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 20px 20px;
+    padding: 15px 20px 15px 20px;
     border-bottom: 1px solid var(--cor-bordas);
     align-items: center;
 }
@@ -64,6 +68,62 @@ nav a:hover {
 
 .page-logo span {
     color: var(--cor-destaque-claro);
+}
+
+.banner-container {
+    padding: 50px 20px;
+    border-bottom: 1px solid var(--cor-bordas);
+    background: linear-gradient(135deg,  var(--cor-fundo), var(--cor-gradiente), var(--cor-fundo));
+}
+
+.hero-label {
+    color: var(--cor-destaque);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 8px;
+}
+
+.hero-title {
+    font-size: 30px;
+    letter-spacing: 1px;
+}
+
+.hero-title span {
+    display: block;
+    color: var(--cor-destaque-claro);
+}
+
+.hero-desc {
+    font-size: 14px;
+    color: var(--cor-texto-escuro);
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+form input {
+    padding: 10px 16px;
+    width: 350px;
+    background-color: var(--cor-fundo-claro);
+    border-radius: 5px;
+    border: 1px solid var(--cor-bordas);
+    color: var(--cor-texto);
+}
+
+form input::placeholder {
+    color: var(--cor-placeholder);
+}
+
+.btn-search {
+    color: var(--cor-texto);
+    padding: 8px 20px 8px 20px;
+    background-color: var(--cor-destaque);
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
 }
 
 .hidden {
