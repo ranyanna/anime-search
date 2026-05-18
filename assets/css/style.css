@@ -9,6 +9,7 @@
     --cor-texto-escuro: #9380a7;
     --cor-bordas: #281d3b;
     --cor-placeholder: #3b3b53;
+    --cor-texto-nav: #b4a3be;
 }
 
 * {
@@ -30,7 +31,7 @@ h1 {
 nav {
     display: flex;
     justify-content: space-between;
-    padding: 15px 20px 15px 20px;
+    padding: 15px 20px;
     border-bottom: 1px solid var(--cor-bordas);
     align-items: center;
 }
@@ -50,7 +51,7 @@ nav li {
 
 nav a {
     text-decoration: none;
-    color: #b4a3be;
+    color: var(--cor-texto-nav);
     transition: color 0.3s ease;
 }
 
@@ -71,7 +72,7 @@ nav a:hover {
 }
 
 .banner-container {
-    padding: 50px 20px;
+    padding: 65px 20px;
     border-bottom: 1px solid var(--cor-bordas);
     background: linear-gradient(135deg,  var(--cor-fundo), var(--cor-gradiente), var(--cor-fundo));
     display: flex;
@@ -99,7 +100,6 @@ nav a:hover {
 
 .hero-title span {
     color: var(--cor-destaque-claro);
-    display: block;
 }
 
 .hero-desc {
@@ -140,9 +140,11 @@ form input::placeholder {
     height: auto;
     object-fit: contain;
     position: absolute;
-    bottom: 0;
-    right: 0;
+    bottom: 20px;
     top: 0;
+    right: 100px;
+    filter: brightness(0.85) saturate(0.8);
+    mask-image: linear-gradient(to left, transparent 0%, black 30%);
 }
 
 .results-container {
