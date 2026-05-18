@@ -74,6 +74,15 @@ nav a:hover {
     padding: 50px 20px;
     border-bottom: 1px solid var(--cor-bordas);
     background: linear-gradient(135deg,  var(--cor-fundo), var(--cor-gradiente), var(--cor-fundo));
+    display: flex;
+    position: relative;
+}
+
+.banner-text {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    flex: 1;
 }
 
 .hero-label {
@@ -81,7 +90,6 @@ nav a:hover {
     font-size: 13px;
     text-transform: uppercase;
     letter-spacing: 3px;
-    margin-bottom: 8px;
 }
 
 .hero-title {
@@ -90,15 +98,15 @@ nav a:hover {
 }
 
 .hero-title span {
-    display: block;
     color: var(--cor-destaque-claro);
+    display: block;
 }
 
 .hero-desc {
     font-size: 14px;
     color: var(--cor-texto-escuro);
     letter-spacing: 1px;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
 }
 
 form input {
@@ -116,7 +124,7 @@ form input::placeholder {
 
 .btn-search {
     color: var(--cor-texto);
-    padding: 8px 20px 8px 20px;
+    padding: 13px 20px 13px 20px;
     background-color: var(--cor-destaque);
     border-radius: 5px;
     font-size: 12px;
@@ -124,6 +132,21 @@ form input::placeholder {
     text-transform: uppercase;
     letter-spacing: 1px;
     cursor: pointer;
+    border: none
+}
+
+.hero-pic {
+    width: 450px;
+    height: auto;
+    object-fit: contain;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    top: 0;
+}
+
+.results-container {
+    margin: 20px;
 }
 
 .hidden {
