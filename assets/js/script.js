@@ -7,6 +7,11 @@ const cardsFav = document.querySelector('.cards-fav')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
+
+    if (input.value.trim() === "") {
+    return
+    }
+
     const busca = input.value
     cardsFav.classList.add('hidden')
     results.classList.remove('hidden')
