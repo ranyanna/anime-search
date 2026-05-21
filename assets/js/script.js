@@ -10,7 +10,7 @@ form.addEventListener('submit', async (event) => {
     event.preventDefault()
 
     if (input.value.trim() === "") {
-    return
+        return
     }
 
     const busca = input.value
@@ -31,7 +31,20 @@ form.addEventListener('submit', async (event) => {
                 const card = document.createElement('div')
                 card.classList.add('card')
                 results.appendChild(card)
-                card.innerHTML = `<img src="${anime.images.jpg.image_url}"> <h3>${anime.title}</h3> <p>${anime.genres.map(genero => genero.name).join(', ')}</p> <button onclick="favoritar('${anime.title}', '${anime.images.jpg.image_url}')">♡ Favoritar</button>`
+                card.innerHTML = `
+                <div class="card-image">
+                <img src="${anime.images.jpg.image_url}">
+                <span class="card-badge">${anime.genres[0]?.name ?? 'N/A'}</span>   
+                </div>
+                <div class="card-info">
+                <h3>${anime.title}</h3>  
+                <p>${anime.genres.map(genero => genero.name).join(', ')}</p>
+                </div>
+                <div class="card-footer">
+                <button onclick="favoritar('${anime.title}', '${anime.images.jpg.image_url}')">♡ Favoritar</button>
+                <span class="card-score">★ ${anime.score ?? 'N/A'}</span>
+                </div>
+            `
             });
         }
     } catch (erro) {
