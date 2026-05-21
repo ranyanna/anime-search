@@ -4,6 +4,7 @@ const results = document.querySelector('.results')
 const loadingResults = document.querySelector('#loading-results')
 const btnFav = document.querySelector('.btn-fav')
 const cardsFav = document.querySelector('.cards-fav')
+const statCount = document.querySelector('.stat-count')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
@@ -21,6 +22,7 @@ form.addEventListener('submit', async (event) => {
         const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
         const dados = await resposta.json()
         const animes = dados.data
+        statCount.textContent = `${animes.length} encontrados`
         results.innerHTML = ''
         if (animes.length === 0) {
             results.innerHTML = `<p>Nenhum resultado encontrado</p>`

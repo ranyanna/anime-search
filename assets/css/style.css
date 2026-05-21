@@ -169,6 +169,43 @@ form input::placeholder {
 .dot:nth-child(2) {animation-delay: 0.2s;}
 .dot:nth-child(3) {animation-delay: 0.4s;}
 
+.results-header {
+    font-family: 'Cinzel', serif;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 13px;
+}
+
+.results-dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--cor-destaque-claro);
+    margin-right: 5px;
+}
+
+.results-search {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.results-border {
+    background-color: var(--cor-bordas);
+    width: 100%;
+    height: 1px;
+    flex: 1;
+}
+
+.stat-count {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--cor-placeholder);
+    font-weight: bold;
+}
+
 .hidden {
     display: none;
 }
