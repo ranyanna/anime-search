@@ -298,6 +298,57 @@ form input::placeholder {
     font-weight: bold;
 }
 
+.card-fav {
+    margin: 15px 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    background-color: var(--cor-cards);
+    border: 1px solid var(--cor-bordas);
+    border-radius: 15px;
+}
+
+.fav-card-image img {
+    width: 60px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.fav-card-info {
+    padding: 5px;
+}
+
+.fav-card-info h3 {
+    font-size: 15px;
+    letter-spacing: 1px;
+    padding-bottom: 10px;
+    color: var(--cor-texto);
+}
+
+.fav-card-info p {
+    background-color: var(--cor-destaque);
+    border-radius: 6px;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 3px 5px;
+    display: inline-block;
+}
+
+.remove-btn {
+    margin-left: auto;
+}
+
+.remove-btn button {
+    background-color: var(--cor-cards);
+    color: var(--cor-texto-escuro);
+    border: 1px solid var(--cor-texto-escuro);
+    border-radius: 15px;
+    padding: 5px 10px 5px 10px;
+    cursor: pointer;
+}
+
 .hidden {
     display: none;
 }
