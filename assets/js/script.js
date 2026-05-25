@@ -33,7 +33,7 @@ form.addEventListener('submit', async (event) => {
                 results.appendChild(card)
                 card.innerHTML = `
                 <div class="card-image">
-                <img src="${anime.images.jpg.image_url}">
+                <img src="${anime.images.jpg.large_image_url}">
                 <span class="card-badge">${anime.genres[0]?.name ?? 'N/A'}</span>   
                 </div>
                 <div class="card-info">
@@ -41,7 +41,7 @@ form.addEventListener('submit', async (event) => {
                 <p>${anime.genres.map(genero => genero.name).join(', ')}</p>
                 </div>
                 <div class="card-footer">
-                <button onclick="favoritar('${anime.title}', '${anime.images.jpg.image_url}')">♡ Favoritar</button>
+                <button onclick="favoritar('${anime.title}', '${anime.images.jpg.large_image_url}')">♡ Favoritar</button>
                 <span class="card-score">★ ${anime.score ?? 'N/A'}</span>
                 </div>
             `
@@ -57,7 +57,6 @@ form.addEventListener('submit', async (event) => {
 
 
 function favoritar(titulo, imagem) {
-    console.log(titulo, imagem)
 
     const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
     favoritosAtuais.push({ titulo, imagem })
@@ -72,7 +71,7 @@ btnFav.addEventListener('click', () => {
     cardsFav.classList.remove('hidden')
     favoritosAtuais.forEach(favoritar => {
         const card = document.createElement('div')
-        card.classList.add('cardsFav')
+        card.classList.add('.cards-fav')
         cardsFav.appendChild(card)
         card.innerHTML = `<img src="${favoritar.imagem}"> <h3>${favoritar.titulo}</h3> <button onclick="remover('${favoritar.titulo}')">Remover</button>`
     })
