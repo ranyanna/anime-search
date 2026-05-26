@@ -5,6 +5,7 @@ const loadingResults = document.querySelector('#loading-results')
 const btnFav = document.querySelector('.btn-fav')
 const cardsFav = document.querySelector('.cards-fav')
 const statCount = document.querySelector('.stat-count')
+const resultsContainer = document.querySelector('.results-container')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
@@ -19,6 +20,7 @@ form.addEventListener('submit', async (event) => {
 
     try {
         loadingResults.classList.remove('hidden')
+        resultsContainer.classList.remove('hidden')
         const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
         const dados = await resposta.json()
         const animes = dados.data
@@ -64,6 +66,7 @@ btnFav.addEventListener('click', () => {
     const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
     cardsFav.innerHTML = ''
     results.classList.add('hidden')
+    resultsContainer.classList.add('hidden')
     cardsFav.classList.remove('hidden')
     favoritosAtuais.forEach(favoritar => {
         const card = document.createElement('div')
