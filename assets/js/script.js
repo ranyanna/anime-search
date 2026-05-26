@@ -7,6 +7,7 @@ const cardsFav = document.querySelector('.cards-fav')
 const statCount = document.querySelector('.stat-count')
 const resultsContainer = document.querySelector('.results-container')
 const favStatCount = document.querySelector('.fav-stat-count')
+const favSearch = document.querySelector('.fav-search')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
@@ -17,11 +18,11 @@ form.addEventListener('submit', async (event) => {
 
     const busca = input.value
     cardsFav.classList.add('hidden')
-    results.classList.remove('hidden')
+    favSearch.classList.add('hidden')
+    resultsContainer.classList.remove('hidden')
 
     try {
         loadingResults.classList.remove('hidden')
-        resultsContainer.classList.remove('hidden')
         const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
         const dados = await resposta.json()
         const animes = dados.data
@@ -63,35 +64,43 @@ function favoritar(titulo, imagem, genero) {
     localStorage.setItem('favoritos', JSON.stringify(favoritosAtuais))
 }
 
-btnFav.addEventListener('click', () => {
+function renderizarFavoritos() {
     const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
     cardsFav.innerHTML = ''
-    results.classList.add('hidden')
     resultsContainer.classList.add('hidden')
+    favSearch.classList.remove('hidden')
     cardsFav.classList.remove('hidden')
-    favStatCount.textContent = `${favoritosAtuais.length} encontrados`
-    favoritosAtuais.forEach(favoritar => {
+    favStatCount.textContent = `${favoritosAtuais.length} salvos`
+
+    if (favoritosAtuais.length === 0) {
+        cardsFav.innerHTML = `<p style="color: var(--cor-texto-escuro); padding: 20px;">Você ainda não tem favoritos =( </p>`
+        return
+    }
+
+    favoritosAtuais.forEach(favorito => {
         const card = document.createElement('div')
         card.classList.add('card-fav')
         cardsFav.appendChild(card)
         card.innerHTML = `
         <div class="fav-card-image">
-            <img src="${favoritar.imagem}">
+            <img src="${favorito.imagem}">
         </div>
         <div class="fav-card-info"> 
-            <h3>${favoritar.titulo}</h3>
-            <p>${favoritar.genero}</p>
+            <h3>${favorito.titulo}</h3>
+            <p>${favorito.genero}</p>
         </div> 
         <div class="remove-btn">
-        <button onclick="remover('${favoritar.titulo}')">✕ Remover</button>
+            <button onclick="remover('${favorito.titulo}')">✕ Remover</button>
         </div>
         `
     })
-})
+}
+
+btnFav.addEventListener('click', renderizarFavoritos)
 
 function remover(titulo) {
     const favoritosAtuais = JSON.parse(localStorage.getItem('favoritos')) || []
     const novosFavoritos = favoritosAtuais.filter(fav => fav.titulo !== titulo)
     localStorage.setItem('favoritos', JSON.stringify(novosFavoritos))
-    btnFav.click()
+    renderizarFavoritos()
 }
