@@ -147,7 +147,8 @@ form input::placeholder {
     mask-image: linear-gradient(to left, transparent 0%, black 30%);
 }
 
-.results-container {
+.results-container,
+.fav-section {
     margin: 20px;
 }
 
@@ -261,14 +262,16 @@ form input::placeholder {
     color: var(--cor-destaque);
 }
 
-.results-header {
+.results-header,
+.fav-header {
     font-family: 'Cinzel', serif;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 13px;
 }
 
-.results-dot {
+.results-dot,
+.fav-dot {
     display: inline-block;
     width: 5px;
     height: 5px;
@@ -277,21 +280,24 @@ form input::placeholder {
     margin-right: 5px;
 }
 
-.results-search {
+.results-search,
+.fav-search {
     display: flex;
     align-items: center;
     gap: 10px;
 }
 
 
-.results-border {
+.results-border,
+.fav-border {
     background-color: var(--cor-bordas);
     width: 100%;
     height: 1px;
     flex: 1;
 }
 
-.stat-count {
+.stat-count,
+.fav-stat-count {
     font-size: 11px;
     letter-spacing: 2px;
     color: var(--cor-placeholder);
@@ -317,6 +323,8 @@ form input::placeholder {
 
 .fav-card-info {
     padding: 5px;
+    flex: 1;
+    min-width: 0;
 }
 
 .fav-card-info h3 {

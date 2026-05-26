@@ -6,6 +6,7 @@ const btnFav = document.querySelector('.btn-fav')
 const cardsFav = document.querySelector('.cards-fav')
 const statCount = document.querySelector('.stat-count')
 const resultsContainer = document.querySelector('.results-container')
+const favStatCount = document.querySelector('.fav-stat-count')
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
@@ -68,6 +69,7 @@ btnFav.addEventListener('click', () => {
     results.classList.add('hidden')
     resultsContainer.classList.add('hidden')
     cardsFav.classList.remove('hidden')
+    favStatCount.textContent = `${favoritosAtuais.length} encontrados`
     favoritosAtuais.forEach(favoritar => {
         const card = document.createElement('div')
         card.classList.add('card-fav')
