@@ -3,49 +3,41 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>anime-search</title>
+    <title>AniBoo</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet">
   </head>
   <body>
     <nav>
       <div class="logo">
-        <h2 class="page-logo"> <span>Ani</span>Boo</h2>
+        <h2 class="page-logo"><span>Ani</span>Boo</h2>
       </div>
-
       <ul>
-        <li>
-          <a href="#" class="search">Busca</a>
-        </li>
-        <li>
-          <a href="#" class="favorites">Favoritos</a>
-        </li>
-        <li>
-          <a href="#" class="top-animes">Top Animes</a>
-        </li>
+        <li><a href="#" class="nav-search">Busca</a></li>
+        <li><a href="#" class="nav-favorites">Favoritos</a></li>
+        <li><a href="#" class="nav-top">Top Animes</a></li>
       </ul>
     </nav>
 
     <main>
       <section class="banner-container">
         <div class="banner-text">
-        <p class="hero-label">Explore seu domínio</p>
-        <h1 class="hero-title">
-          Encontre seu próximo <span>anime favorito</span>
-        </h1>
-        <p class="hero-desc">
-          Busque por nome, explore por gênero, salve os seus favoritos.
-        </p>
-        <form>
-          <input
-            type="search"
-            name=""
-            id="name"
-            placeholder="Ex: Jujutsu Kaisen, Bleach, One Piece..."
-            autocomplete="off"
-          />
-          <button type="submit" class="btn-search">Buscar</button>
-        </form>
+          <p class="hero-label">Explore seu domínio</p>
+          <h1 class="hero-title">
+            Encontre seu próximo <span>anime favorito</span>
+          </h1>
+          <p class="hero-desc">
+            Busque por nome, explore por gênero, salve os seus favoritos.
+          </p>
+          <form>
+            <input
+              type="search"
+              id="search-input"
+              placeholder="Ex: Jujutsu Kaisen, Bleach, One Piece..."
+              autocomplete="off"
+            />
+            <button type="submit" class="btn-search">Buscar</button>
+          </form>
         </div>
 
         <div class="img-banner">
@@ -54,37 +46,39 @@
       </section>
 
       <section class="results-container hidden">
-          <div class="results-search">
-          <p class="results-header"> 
-            <span class="results-dot"></span> Resultados da busca
+        <div class="section-header">
+          <p class="section-title">
+            <span class="section-dot"></span> Resultados da busca
           </p>
-          <span class="results-border"></span>
+          <span class="section-border"></span>
           <span class="stat-count"></span>
         </div>
-        
+
         <div class="results"></div>
 
         <div class="loading-results hidden" id="loading-results">
-          <p> 
-            <span class="dot"></span> 
-            <span class="dot"></span> 
-            <span class="dot"></span> Carregando resultados...</p>
+          <p>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+            Carregando resultados...
+          </p>
         </div>
       </section>
 
       <section class="fav-section">
-        <div class="fav-search hidden">
-        <p class="fav-header">
-          <span class="fav-dot"></span>
-          Meus Favoritos
-        </p>
-        <span class="fav-border"></span>
-        <span class="fav-stat-count"></span>
+        <div class="section-header fav-header hidden">
+          <p class="section-title">
+            <span class="section-dot"></span> Meus Favoritos
+          </p>
+          <span class="section-border"></span>
+          <span class="fav-stat-count"></span>
         </div>
         <button class="btn-fav" id="btn-fav">Ver Favoritos</button>
         <div class="cards-fav" id="cards-fav"></div>
       </section>
     </main>
+
     <script src="assets/js/script.js"></script>
   </body>
 </html>

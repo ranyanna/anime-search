@@ -12,7 +12,9 @@
     --cor-texto-nav: #b4a3be;
 }
 
-* {
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -38,15 +40,13 @@ nav {
 
 nav ul {
     display: flex;
-    flex-direction: row;
     gap: 25px;
+    list-style: none;
 }
 
 nav li {
-    list-style: none;
     font-size: 14px;
     text-transform: uppercase;
-    text-decoration: none;
 }
 
 nav a {
@@ -124,7 +124,7 @@ form input::placeholder {
 
 .btn-search {
     color: var(--cor-texto);
-    padding: 13px 20px 13px 20px;
+    padding: 13px 20px;
     background-color: var(--cor-destaque);
     border-radius: 5px;
     font-size: 12px;
@@ -147,29 +147,47 @@ form input::placeholder {
     mask-image: linear-gradient(to left, transparent 0%, black 30%);
 }
 
-.results-container,
-.fav-section {
-    margin: 20px;
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
-
-@keyframes piscar {
-    0% {opacity: 1;}
-    50% {opacity: 0.2;}
-    100% {opacity: 1;}
+ 
+.section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-
-.dot {
+ 
+.section-dot {
     display: inline-block;
     width: 5px;
     height: 5px;
     border-radius: 50%;
     background-color: var(--cor-destaque-claro);
-    animation: piscar 0.6s infinite;  
+    margin-right: 5px;
+}
+ 
+.section-border {
+    flex: 1;
+    height: 1px;
+    background-color: var(--cor-bordas);
+}
+ 
+.stat-count,
+.fav-stat-count {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: var(--cor-placeholder);
 }
 
-.dot:nth-child(2) {animation-delay: 0.2s;}
-.dot:nth-child(3) {animation-delay: 0.4s;}
-
+.results-container,
+.fav-section {
+    margin: 20px;
+}
+ 
 .results {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -180,182 +198,163 @@ form input::placeholder {
 .card {
     display: flex;
     flex-direction: column;
-    background-color: var(--cor-cards);
-    border-radius: 20px;
     height: 280px;
+    background-color: var(--cor-cards);
     border: 1px solid var(--cor-bordas);
+    border-radius: 20px;
 }
-
+ 
 .card-image {
     position: relative;
     height: 160px;
     overflow: hidden;
     border-radius: 20px 20px 0 0;
 }
-
+ 
 .card-image img {
     width: 100%;
     height: 100%;
     object-fit: cover;
 }
-
+ 
 .card-badge {
     position: absolute;
-    background-color: var(--cor-destaque);
     top: 0;
     left: 0;
-    padding: 3px 5px;
     margin: 5px;
-    border-radius: 6px;
+    padding: 3px 5px;
+    background-color: var(--cor-destaque);
     border: 1px solid var(--cor-destaque-claro);
+    border-radius: 6px;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
 }
-
+ 
 .card-info {
-    padding: 10px 10px 0 10px;
+    padding: 10px 10px 0;
 }
-
+ 
 .card-info h3 {
     font-size: 14px;
     letter-spacing: 1px;
     color: var(--cor-texto);
 }
-
+ 
 .card-info p {
     padding-top: 10px;
     font-size: 10px;
     letter-spacing: 1px;
     color: var(--cor-texto-escuro);
 }
-
+ 
 .card-footer {
     display: flex;
-    gap: 10px;
-    justify-content: space-between;
-    margin-top: auto;
     align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: auto;
     padding: 10px;
 }
-
+ 
 .card-footer button {
+    flex: 1;
     padding: 8px 0;
-    border-radius: 7px;
     background-color: var(--cor-cards);
-    color: var(--cor-texto-escuro);
     border: 1px solid var(--cor-bordas);
+    border-radius: 7px;
+    color: var(--cor-texto-escuro);
     font-size: 11px;
     letter-spacing: 1px;
     cursor: pointer;
-    transition: all 0.3s ease;
-    flex: 1;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
-
+ 
 .card-footer button:hover {
     color: var(--cor-destaque);
-    border: 1px solid var(--cor-destaque);
+    border-color: var(--cor-destaque);
 }
-
+ 
 .card-score {
     font-size: 13px;
     color: var(--cor-destaque);
 }
 
-.results-header,
-.fav-header {
-    font-family: 'Cinzel', serif;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 13px;
-}
-
-.results-dot,
-.fav-dot {
-    display: inline-block;
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background-color: var(--cor-destaque-claro);
-    margin-right: 5px;
-}
-
-.results-search,
-.fav-search {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-
-.results-border,
-.fav-border {
-    background-color: var(--cor-bordas);
-    width: 100%;
-    height: 1px;
-    flex: 1;
-}
-
-.stat-count,
-.fav-stat-count {
-    font-size: 11px;
-    letter-spacing: 2px;
-    color: var(--cor-placeholder);
-    font-weight: bold;
-}
-
 .card-fav {
-    margin: 15px 20px;
-    padding: 10px;
     display: flex;
     align-items: center;
+    margin: 15px 0;
+    padding: 10px;
     background-color: var(--cor-cards);
     border: 1px solid var(--cor-bordas);
     border-radius: 15px;
 }
-
+ 
 .fav-card-image img {
     width: 60px;
     height: 70px;
     object-fit: cover;
     border-radius: 10px;
 }
-
+ 
 .fav-card-info {
-    padding: 5px;
     flex: 1;
     min-width: 0;
+    padding: 5px;
 }
-
+ 
 .fav-card-info h3 {
     font-size: 15px;
     letter-spacing: 1px;
     padding-bottom: 10px;
     color: var(--cor-texto);
 }
-
+ 
 .fav-card-info p {
+    display: inline-block;
+    padding: 3px 5px;
     background-color: var(--cor-destaque);
     border-radius: 6px;
     font-size: 10px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 3px 5px;
-    display: inline-block;
 }
-
+ 
 .remove-btn {
     margin-left: auto;
 }
-
+ 
 .remove-btn button {
+    padding: 5px 10px;
     background-color: var(--cor-cards);
-    color: var(--cor-texto-escuro);
     border: 1px solid var(--cor-texto-escuro);
     border-radius: 15px;
-    padding: 5px 10px 5px 10px;
+    color: var(--cor-texto-escuro);
     cursor: pointer;
+    transition: color 0.3s ease, border-color 0.3s ease;
 }
+ 
+.remove-btn button:hover {
+    color: var(--cor-destaque-claro);
+    border-color: var(--cor-destaque-claro);
+}
+
+@keyframes piscar {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.2; }
+}
+ 
+.dot {
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background-color: var(--cor-destaque-claro);
+    animation: piscar 0.6s infinite;
+}
+ 
+.dot:nth-child(2) { animation-delay: 0.2s; }
+.dot:nth-child(3) { animation-delay: 0.4s; }
 
 .hidden {
     display: none;
