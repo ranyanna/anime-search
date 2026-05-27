@@ -10,6 +10,7 @@
     --cor-bordas: #281d3b;
     --cor-placeholder: #3b3b53;
     --cor-texto-nav: #b4a3be;
+    --altura-nav: 60px;
 }
 
 *,
@@ -31,11 +32,17 @@ h1 {
 }
 
 nav {
+    height: var(--altura-nav);
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
+    background-color: var(--cor-fundo);
     border-bottom: 1px solid var(--cor-bordas);
     align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;  /* fica por cima de outros elementos */
 }
 
 nav ul {
@@ -144,6 +151,10 @@ form input::placeholder {
     right: 100px;
     filter: brightness(0.85) saturate(0.8);
     mask-image: linear-gradient(to left, transparent 0%, black 30%);
+}
+
+main {
+    padding-top: var(--altura-nav);
 }
 
 .section-header {
