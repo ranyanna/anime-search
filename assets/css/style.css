@@ -79,11 +79,13 @@ nav a:hover {
 }
 
 .banner-container {
-    padding: 65px 20px;
+    height: calc(100vh - var(--altura-nav));
+    padding: 0 20px;
     border-bottom: 1px solid var(--cor-bordas);
     background: linear-gradient(135deg,  var(--cor-fundo), var(--cor-gradiente), var(--cor-fundo));
     display: flex;
     position: relative;
+    align-items: center;
 }
 
 .banner-text {
@@ -142,13 +144,12 @@ form input::placeholder {
 }
 
 .hero-pic {
-    width: 450px;
-    height: auto;
-    object-fit: contain;
     position: absolute;
-    bottom: 20px;
-    top: 0;
-    right: 100px;
+    right: 0;
+    bottom: 0;
+    height: 100%;
+    width: 450px;
+    object-fit: contain;
     filter: brightness(0.85) saturate(0.8);
     mask-image: linear-gradient(to left, transparent 0%, black 30%);
 }
