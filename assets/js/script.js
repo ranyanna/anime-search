@@ -2,7 +2,7 @@ const form = document.querySelector('form')
 const input = document.querySelector('#search-input')
 const results = document.querySelector('.results')
 const loadingResults = document.querySelector('#loading-results')
-const btnFav = document.querySelector('#btn-fav')
+const navFavorites = document.querySelector('.nav-favorites')
 const cardsFav = document.querySelector('#cards-fav')
 const statCount = document.querySelector('.stat-count')
 const resultsContainer = document.querySelector('.results-container')
@@ -111,7 +111,10 @@ function renderizarFavoritos() {
     })
 }
 
-btnFav.addEventListener('click', renderizarFavoritos)
+navFavorites.addEventListener('click', (event) => {
+    event.preventDefault()
+    renderizarFavoritos()
+})
  
 function remover(titulo) {
     const favoritos = getFavoritos()
