@@ -70,6 +70,10 @@ form.addEventListener('submit', async (event) => {
 
 function favoritar(titulo, imagem, genero) {
     const favoritos = getFavoritos()
+    if (favoritos.some(item => item.titulo === titulo)) {
+        return
+    }
+
     favoritos.push({ titulo, imagem, genero })
     salvarFavoritos(favoritos)
 }
