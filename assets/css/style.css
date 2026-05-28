@@ -441,3 +441,36 @@ footer {
 .hidden {
     display: none;
 }
+
+@media (max-width: 768px) {
+    .hero-pic {
+        opacity: 0.3;
+        z-index: 0;
+    }
+
+    .banner-text {
+        z-index: 1;
+        text-align: center;
+    }
+
+    form input {
+    width: 100%;
+    }
+
+    .btn-search {
+        margin-top: 20px;
+    }
+
+    .results {
+        grid-template-columns: 1fr;
+    }
+
+    .about {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .about-badges {
+        justify-content: center;
+    }
+}
