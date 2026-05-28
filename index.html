@@ -5,18 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AniBoo</title>
     <link rel="stylesheet" href="assets/css/style.css" />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;500;600&display=swap"
-      rel="stylesheet"
-    />
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet" />
   </head>
   <body>
     <nav>
-      <div class="logo">
-        <h2>
-          <a href="index.html" class="page-logo"><span>Ani</span>Boo</a>
-        </h2>
-      </div>
+      <h2 class="logo">
+        <a href="index.html" class="page-logo"><span>Ani</span>Boo</a>
+      </h2>
       <ul>
         <li><a href="#" class="nav-search">Busca</a></li>
         <li><a href="#" class="nav-favorites">Favoritos</a></li>
@@ -34,7 +29,7 @@
           <p class="hero-desc">
             Busque por nome, explore por gênero, salve os seus favoritos.
           </p>
-          <form>
+          <form class="search-form">
             <input
               type="search"
               id="search-input"
@@ -46,13 +41,7 @@
           </form>
         </div>
 
-        <div class="img-banner">
-          <img
-            src="assets/img/gojo-satoru.png"
-            alt="Gojo Satoru"
-            class="hero-pic"
-          />
-        </div>
+        <img src="assets/img/gojo-satoru.png" alt="Gojo Satoru" class="hero-pic" />
       </section>
 
       <section class="results-container hidden">
@@ -66,7 +55,7 @@
 
         <div class="results"></div>
 
-        <div class="loading-results hidden" id="loading-results">
+        <div id="loading-results" class="hidden">
           <p>
             <span class="dot"></span>
             <span class="dot"></span>

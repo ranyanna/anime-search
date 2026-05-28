@@ -1,135 +1,157 @@
-const form = document.querySelector('form')
+const form = document.querySelector('.search-form')
 const input = document.querySelector('#search-input')
 const results = document.querySelector('.results')
 const loadingResults = document.querySelector('#loading-results')
 const navFavorites = document.querySelector('.nav-favorites')
+const navAbout = document.querySelector('.nav-about')
+const navSearch = document.querySelector('.nav-search')
 const cardsFav = document.querySelector('#cards-fav')
 const statCount = document.querySelector('.stat-count')
 const resultsContainer = document.querySelector('.results-container')
 const favStatCount = document.querySelector('.fav-stat-count')
 const favHeader = document.querySelector('.fav-header')
 const favSection = document.querySelector('.fav-section')
-const navAbout = document.querySelector('.nav-about')
+const bannerContainer = document.querySelector('.banner-container')
 const about = document.querySelector('.about')
 
-function getFavoritos() {
-    return JSON.parse(localStorage.getItem('favoritos')) || []
+function getFavorites() {
+    return JSON.parse(localStorage.getItem('favorites')) || []
 }
- 
-function salvarFavoritos(favoritos) {
-    localStorage.setItem('favoritos', JSON.stringify(favoritos))
+
+function saveFavorites(favorites) {
+    localStorage.setItem('favorites', JSON.stringify(favorites))
 }
 
 form.addEventListener('submit', async (event) => {
     event.preventDefault()
- 
-    const busca = input.value.trim()
-    if (!busca) return
- 
+
+    const query = input.value.trim()
+    if (!query) return
+
     cardsFav.classList.add('hidden')
     favHeader.classList.add('hidden')
     resultsContainer.classList.remove('hidden')
- 
+
     try {
         loadingResults.classList.remove('hidden')
- 
-        const resposta = await fetch(`https://api.jikan.moe/v4/anime?q=${busca}`)
-        const dados = await resposta.json()
-        const animes = dados.data
- 
+
+        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`)
+        const data = await response.json()
+        const animes = data.data
+
         statCount.textContent = `${animes.length} encontrados`
         results.innerHTML = ''
-        resultsContainer.scrollIntoView({behavior: 'smooth'})
- 
+        resultsContainer.scrollIntoView({ behavior: 'smooth' })
+
         if (animes.length === 0) {
-            results.innerHTML = `<p>Nenhum resultado encontrado</p>`
+            results.innerHTML = `<p class="empty-message">Nenhum resultado encontrado</p>`
             return
         }
- 
+
         animes.forEach(anime => {
             const card = document.createElement('div')
             card.classList.add('card')
-            results.appendChild(card)
+
+            const genre = anime.genres[0]?.name ?? 'N/A'
+            const imageUrl = anime.images.jpg.large_image_url
+
             card.innerHTML = `
                 <div class="card-image">
-                    <img src="${anime.images.jpg.large_image_url}" alt="${anime.title}">
-                    <span class="card-badge">${anime.genres[0]?.name ?? 'N/A'}</span>
+                    <img src="${imageUrl}" alt="${anime.title}">
+                    <span class="card-badge">${genre}</span>
                 </div>
                 <div class="card-info">
                     <h3>${anime.title}</h3>
-                    <p>${anime.genres.map(genero => genero.name).join(', ')}</p>
+                    <p>${anime.genres.map(g => g.name).join(', ')}</p>
                 </div>
                 <div class="card-footer">
-                    <button onclick="favoritar('${anime.title}', '${anime.images.jpg.large_image_url}', '${anime.genres[0]?.name ?? 'N/A'}')">♡ Favoritar</button>
+                    <button class="btn-favorite">♡ Favoritar</button>
                     <span class="card-score">★ ${anime.score ?? 'N/A'}</span>
                 </div>
             `
+
+            card.querySelector('.btn-favorite').addEventListener('click', () => {
+                addFavorite(anime.title, imageUrl, genre)
+            })
+
+            results.appendChild(card)
         })
-    } catch (erro) {
-        results.innerHTML = `<p>Servidor não encontrado</p>`
+    } catch (error) {
+        results.innerHTML = `<p class="empty-message">Servidor não encontrado</p>`
     } finally {
         loadingResults.classList.add('hidden')
     }
 })
 
-function favoritar(titulo, imagem, genero) {
-    const favoritos = getFavoritos()
-    if (favoritos.some(item => item.titulo === titulo)) {
-        return
-    }
+function addFavorite(title, image, genre) {
+    const favorites = getFavorites()
 
-    favoritos.push({ titulo, imagem, genero })
-    salvarFavoritos(favoritos)
+    if (favorites.some(item => item.title === title)) return
+
+    favorites.push({ title, image, genre })
+    saveFavorites(favorites)
 }
- 
-function renderizarFavoritos() {
-    const favoritos = getFavoritos()
- 
+
+function renderFavorites() {
+    const favorites = getFavorites()
+
     cardsFav.innerHTML = ''
     resultsContainer.classList.add('hidden')
     favHeader.classList.remove('hidden')
     cardsFav.classList.remove('hidden')
-    favStatCount.textContent = `${favoritos.length} salvos`
-    favSection.scrollIntoView({behavior:'smooth'})
-    if (favoritos.length === 0) {
-        cardsFav.innerHTML = `<p style="color: var(--cor-texto-escuro); padding: 20px;">Você ainda não tem favoritos =(</p>`
+    favStatCount.textContent = `${favorites.length} salvos`
+    favSection.scrollIntoView({ behavior: 'smooth' })
+
+    if (favorites.length === 0) {
+        cardsFav.innerHTML = `<p class="empty-message">Você ainda não tem favoritos =(</p>`
         return
     }
- 
-    favoritos.forEach(favorito => {
+
+    favorites.forEach(favorite => {
         const card = document.createElement('div')
         card.classList.add('card-fav')
-        cardsFav.appendChild(card)
+
         card.innerHTML = `
             <div class="fav-card-image">
-                <img src="${favorito.imagem}" alt="${favorito.titulo}">
+                <img src="${favorite.image}" alt="${favorite.title}">
             </div>
             <div class="fav-card-info">
-                <h3>${favorito.titulo}</h3>
-                <p>${favorito.genero}</p>
+                <h3>${favorite.title}</h3>
+                <p>${favorite.genre}</p>
             </div>
             <div class="remove-btn">
-                <button onclick="remover('${favorito.titulo}')">✕ Remover</button>
+                <button class="btn-remove">✕ Remover</button>
             </div>
         `
+
+        card.querySelector('.btn-remove').addEventListener('click', () => {
+            removeFavorite(favorite.title)
+        })
+
+        cardsFav.appendChild(card)
     })
+}
+
+function removeFavorite(title) {
+    const favorites = getFavorites()
+    const updatedFavorites = favorites.filter(fav => fav.title !== title)
+    saveFavorites(updatedFavorites)
+    renderFavorites()
 }
 
 navFavorites.addEventListener('click', (event) => {
     event.preventDefault()
-    renderizarFavoritos()
+    renderFavorites()
 })
- 
-function remover(titulo) {
-    const favoritos = getFavoritos()
-    const novosFavoritos = favoritos.filter(fav => fav.titulo !== titulo)
-    salvarFavoritos(novosFavoritos)
-    renderizarFavoritos()
-}
 
 navAbout.addEventListener('click', (event) => {
     event.preventDefault()
-    about.scrollIntoView({behavior: 'smooth'})
+    about.scrollIntoView({ behavior: 'smooth' })
+})
+
+navSearch.addEventListener('click', (event) => {
+    event.preventDefault()
+    bannerContainer.scrollIntoView({ behavior: 'smooth' })
 })
 
 document.querySelector('#year').textContent = new Date().getFullYear()
