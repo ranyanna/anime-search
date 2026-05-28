@@ -8,6 +8,7 @@ const statCount = document.querySelector('.stat-count')
 const resultsContainer = document.querySelector('.results-container')
 const favStatCount = document.querySelector('.fav-stat-count')
 const favHeader = document.querySelector('.fav-header')
+const favSection = document.querySelector('.fav-section')
 
 function getFavoritos() {
     return JSON.parse(localStorage.getItem('favoritos')) || []
@@ -36,6 +37,7 @@ form.addEventListener('submit', async (event) => {
  
         statCount.textContent = `${animes.length} encontrados`
         results.innerHTML = ''
+        resultsContainer.scrollIntoView({behavior: 'smooth'})
  
         if (animes.length === 0) {
             results.innerHTML = `<p>Nenhum resultado encontrado</p>`
@@ -86,7 +88,7 @@ function renderizarFavoritos() {
     favHeader.classList.remove('hidden')
     cardsFav.classList.remove('hidden')
     favStatCount.textContent = `${favoritos.length} salvos`
- 
+    favSection.scrollIntoView({behavior:'smooth'})
     if (favoritos.length === 0) {
         cardsFav.innerHTML = `<p style="color: var(--cor-texto-escuro); padding: 20px;">Você ainda não tem favoritos =(</p>`
         return
