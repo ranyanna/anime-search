@@ -9,6 +9,8 @@ const resultsContainer = document.querySelector('.results-container')
 const favStatCount = document.querySelector('.fav-stat-count')
 const favHeader = document.querySelector('.fav-header')
 const favSection = document.querySelector('.fav-section')
+const navAbout = document.querySelector('.nav-about')
+const about = document.querySelector('.about')
 
 function getFavoritos() {
     return JSON.parse(localStorage.getItem('favoritos')) || []
@@ -124,3 +126,8 @@ function remover(titulo) {
     salvarFavoritos(novosFavoritos)
     renderizarFavoritos()
 }
+
+navAbout.addEventListener('click', (event) => {
+    event.preventDefault()
+    about.scrollIntoView({behavior: 'smooth'})
+})
