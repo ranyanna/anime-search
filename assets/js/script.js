@@ -131,3 +131,5 @@ navAbout.addEventListener('click', (event) => {
     event.preventDefault()
     about.scrollIntoView({behavior: 'smooth'})
 })
+
+document.querySelector('#year').textContent = new Date().getFullYear()
