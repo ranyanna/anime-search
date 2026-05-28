@@ -14,3 +14,6 @@ Plataforma de busca de animes desenvolvida com HTML, CSS e JavaScript puro, cons
 - HTML5
 - CSS3 (variáveis CSS, Grid, Flexbox, animações)
 - JavaScript puro (Fetch API, DOM manipulation, localStorage)
+
+## 🌐 Acesse o projeto
+[https://ranyanna.github.io/anime-search/](https://ranyanna.github.io/anime-search/)
