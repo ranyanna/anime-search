@@ -461,7 +461,12 @@ footer {
         z-index: 1;
     }
 
+    .search-form {
+        width: 100%;
+    }
+
     .search-form input {
+        flex-direction: column;
         width: 100%;
     }
 
