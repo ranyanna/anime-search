@@ -35,7 +35,7 @@ form.addEventListener('submit', async (event) => {
     try {
         loadingResults.classList.remove('hidden')
 
-        const response = await fetch(`https://api.jikan.moe/v4/anime?q=${query}`)
+        const response = await fetch(`https://api.tenrai.org/v1/anime?q=${query}`)
         const data = await response.json()
         const animes = data.data
 
