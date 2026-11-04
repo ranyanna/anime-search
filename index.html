@@ -1,113 +1,13 @@
 <!doctype html>
-<html lang="pt-br">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>AniBoo</title>
-    <link rel="stylesheet" href="assets/css/style.css" />
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Rajdhani:wght@400;500;600&display=swap" rel="stylesheet" />
+    <title>anime-search</title>
   </head>
   <body>
-    <nav>
-      <h2 class="logo">
-        <a href="index.html" class="page-logo"><span>Ani</span>Boo</a>
-      </h2>
-      <ul>
-        <li><a href="#" class="nav-search">Busca</a></li>
-        <li><a href="#" class="nav-favorites">Favoritos</a></li>
-        <li><a href="#" class="nav-about">Sobre</a></li>
-      </ul>
-    </nav>
-
-    <main>
-      <section class="banner-container">
-        <div class="banner-text">
-          <p class="hero-label">Explore seu domínio</p>
-          <h1 class="hero-title">
-            Encontre seu próximo <span>anime favorito</span>
-          </h1>
-          <p class="hero-desc">
-            Busque por nome, explore por gênero, salve os seus favoritos.
-          </p>
-          <form class="search-form">
-            <input
-              type="search"
-              id="search-input"
-              name="search"
-              placeholder="Ex: Jujutsu Kaisen, Bleach, One Piece..."
-              autocomplete="off"
-            />
-            <button type="submit" class="btn-search">Buscar</button>
-          </form>
-        </div>
-
-        <img src="assets/img/gojo-satoru.png" alt="Gojo Satoru" class="hero-pic" />
-      </section>
-
-      <section class="results-container hidden">
-        <div class="section-header">
-          <p class="section-title">
-            <span class="section-dot"></span> Resultados da busca
-          </p>
-          <span class="section-border"></span>
-          <span class="stat-count"></span>
-        </div>
-
-        <div class="results"></div>
-
-        <div id="loading-results" class="hidden">
-          <p>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            Carregando resultados...
-          </p>
-        </div>
-      </section>
-
-      <section class="fav-section">
-        <div class="section-header fav-header hidden">
-          <p class="section-title">
-            <span class="section-dot"></span> Meus Favoritos
-          </p>
-          <span class="section-border"></span>
-          <span class="fav-stat-count"></span>
-        </div>
-        <div class="cards-fav" id="cards-fav"></div>
-      </section>
-    </main>
-
-    <footer>
-      <div class="about">
-        <div class="about-left">
-          <h2 class="about-title">Sobre</h2>
-          <h3 class="about-logo"><span>Ani</span>Boo</h3>
-          <ul class="about-badges">
-            <li>Html</li>
-            <li>Css</li>
-            <li>Js</li>
-          </ul>
-        </div>
-        <div class="about-right">
-          <p>
-            Olá! Sou Ranyanna Ayala, estudante de Engenharia de Software na
-            Unigran Capital, e o AniBoo é um dos projetos que desenvolvi para
-            construir meu portfólio como desenvolvedora Front-End. O projeto
-            consome a API pública Jikan (MyAnimeList) e permite buscar animes
-            por nome, visualizar informações como gênero e pontuação, e salvar
-            seus favoritos, que ficam guardados mesmo após fechar o navegador,
-            graças ao localStorage. Desenvolvido com HTML, CSS e JavaScript
-            puro, sem frameworks, com foco em boas práticas, clean code e
-            experiência do usuário.
-          </p>
-        </div>
-      </div>
-
-      <div class="footer-bottom">
-        <p>&copy; <span id="year"></span> Ranyanna Ayala</p>
-      </div>
-    </footer>
-
-    <script src="assets/js/script.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

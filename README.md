@@ -1,19 +1,16 @@
-# AniBoo ⌨ᝰ๋࣭𝜗᭡
+# React + Vite
 
-Plataforma de busca de animes desenvolvida com HTML, CSS e JavaScript puro, consumindo a API pública [Jikan (MyAnimeList)](https://jikan.moe/).
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-## 👾 Funcionalidades
+Currently, two official plugins are available:
 
-- Busca de animes por nome em tempo real
-- Visualização de informações como gênero e pontuação
-- Sistema de favoritos com persistência via localStorage
-- Interface responsiva para desktop e mobile
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## 🛠️ Tecnologias
+## React Compiler
 
-- HTML5
-- CSS3 (variáveis CSS, Grid, Flexbox, animações)
-- JavaScript puro (Fetch API, DOM manipulation, localStorage)
+The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
 
-## 🌐 Acesse o projeto
-[https://ranyanna.github.io/anime-search/](https://ranyanna.github.io/anime-search/)
+## Expanding the ESLint configuration
+
+If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
